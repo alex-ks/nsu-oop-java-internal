@@ -80,9 +80,10 @@ public class FibonacciGenerator {
     private long[] cache;
 
     public FibonacciGenerator(int elementsCount) {
-        if (elementsCount > 0) {
-            cache = new long[elementsCount];  // by default all values are zero.
+        if (elementsCount <= 0) {
+            return;
         }
+        cache = new long[elementsCount];  // by default all values are zero.
         // Initialize our sequence cache with first two values.
         cache[0] = 1;
         if (elementsCount > 1) {
@@ -91,7 +92,7 @@ public class FibonacciGenerator {
     }
 
     public long getNthNumber(int n) {
-        if (n < 0 || n >= cache.length) {
+        if (cache == null || n < 0 || n >= cache.length) {
             return -1;
         }
         if (cache[n] != 0) {
